@@ -1,0 +1,29 @@
+{
+  "skills": [
+    {
+      "title": "React Js",
+      "icon": "/icons/react.png",
+      "bgColor": "#66D3FA",
+      "level": 3,
+      "description": "master"
+    }, {
+      "title": "Javascript",
+      "icon": "/icons/js.png",
+      "bgColor": "#F0DB4F",
+      "level": 3,
+      "description": "master"
+    }, {
+      "title": "HTML5",
+      "icon": "/icons/html.png",
+      "bgColor": "#F06529",
+      "level": 2,
+      "description": "master"
+    }, {
+      "title": "CSS3",
+      "icon": "/icons/css.png",
+      "bgColor": "#3C99DC",
+      "level": 1,
+      "description": "master"
+    }
+  ]
+}
