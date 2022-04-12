@@ -1,128 +1,80 @@
 import type { NextComponentType } from 'next'
-import Image from 'next/image'
+import { useState, useMemo } from 'react'
 import styled from 'styled-components'
-import { EmojiEvents } from '@material-ui/icons';
-import data from '../data/skills.json'
-import getColor from '../utils/getColors';
+import data from '../data/index.json'
+import SectionInterface from '../interfaces/section'
+import Card from './Card'
+import Trophies from './Trophies'
 
-const CardContainer = styled.li`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-start;
-
-  border-radius: 4px;
-  background-color: #fff;
-  color: #000;
-
-  width: 200px;
-  height: 75px;
-
-  padding: 8px;
-  margin-bottom: 16px;
-`;
-const CardIcon = styled.div<{ bgColor:string }>`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  width: 32px;
-  height: 32px;
-  border-radius: 100%;
-  background-color: ${({ bgColor }) => bgColor};
-
-  img {
-    filter: brightness(0) invert(1);
-  }
-`;
-const CardBody = styled.div`
+const SectionContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: flex-start;
-
-  margin-left: 16px;
-
-  p {
-    font-size: 10px;
-    font-weight: 300;
-    padding-left: 8px;
-  }
-`;
-const CardTitle = styled.div<{ lvl:number }>`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
   justify-content: center;
 
-  span {
-    font-size: 16px;
-    font-weight: 600;
-    margin-left: 4px;
+  background: #fff;
+  border-radius: 4px;
+
+  padding: 16px;
+  margin-bottom: 16px;
+  height: 600px;
+  width: 100%;
+
+  overflow-y: auto;
+
+  h2 {
+    font-size: 22px;
+    font-weight: 300;
+    margin-bottom: 16px;
   }
 
-  svg {
-    font-size: 16px;
-    color: ${({lvl}) => getColor(lvl)};
+  ul {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+
+    width: 100%;
   }
 `;
-
-interface SectionInterface {
-  title: string
-  content: string
-}
-
-interface CardInterface {
-  title: string
-  icon: string
-  bgColor: string
-  level: number
-  description: string
-}
-
-const Card: NextComponentType = ({
-  title,
-  icon,
-  bgColor,
-  level,
-  description
-}: CardInterface) => {
-  return (
-    <CardContainer>
-      <CardIcon bgColor={bgColor}>
-        <Image
-          src={icon}
-          alt={title}
-          height={22}
-          width={22}
-        />
-      </CardIcon>
-      <CardBody>
-        <CardTitle lvl={level}>
-          <EmojiEvents />
-          <span>{title}</span>
-        </CardTitle>
-        <p>{description}</p>
-      </CardBody>
-    </CardContainer>
-  )
-}
 
 const Section: NextComponentType = ({
   title,
   content
 }: SectionInterface) => {
-  const body: [CardInterface] = data[content]
+  const [ showMore, setShowMore ] = useState(false);
+  const [ body, setBody ] = useState([]);
+
+  const hiddenCards = useMemo(() => {
+    return data[content].length > 4
+  }, [body])
+
+  useMemo(() => {
+    if(showMore) {
+      setBody(data[content])
+    } else {
+      setBody(data[content].slice(0, 4))
+
+    }
+  }, [showMore])
 
   return (
-    <div>
+    <SectionContainer>
       <h2>{title}</h2>
+      {content === 'skills' && <Trophies data={data[content]} />}
       <ul>
         {body.map((item) => (
           <Card key={item.title} {...item}  />
         ))}
+        {hiddenCards &&
+          <li>
+            <button type="button" onClick={() => setShowMore(!showMore)}>
+              {showMore ? 'Ver menos...' : 'Ver mais...'}
+            </button>
+          </li>
+        }
       </ul>
-    </div>
+    </SectionContainer>
   )
 }
 

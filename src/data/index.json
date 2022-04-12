@@ -1,0 +1,100 @@
+{
+  "skills": [
+    {
+      "title": "Javascript",
+      "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
+      "bgColor": "rgb(240, 219, 79)",
+      "level": 3,
+      "description": ""
+    }, {
+      "title": "Typescript",
+      "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
+      "bgColor": "rgb(0, 122, 204)",
+      "level": 2,
+      "description": ""
+    }, {
+      "title": "HTML5",
+      "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original-wordmark.svg",
+      "bgColor": "rgb(229, 77, 38)",
+      "level": 3,
+      "description": ""
+    }, {
+      "title": "CSS3",
+      "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original-wordmark.svg",
+      "bgColor": "rgb(61, 143, 198)",
+      "level": 3,
+      "description": ""
+    }, {
+      "title": "React Js",
+      "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original-wordmark.svg",
+      "bgColor": "rgb(97, 218, 251)",
+      "level": 3,
+      "description": ""
+    }, {
+      "title": "Angular Js",
+      "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg",
+      "bgColor": "rgb(196, 71, 58)",
+      "level": 1,
+      "description": ""
+    }, {
+      "title": "Node Js",
+      "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-plain.svg",
+      "bgColor": "rgb(131, 205, 41)",
+      "level": 3,
+      "description": ""
+    }, {
+      "title": "Adonis Js",
+      "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/adonisjs/adonisjs-original.svg",
+      "bgColor": "rgb(90, 69, 255)",
+      "level": 2,
+      "description": ""
+    }, {
+      "title": "Nest Js",
+      "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nestjs/nestjs-plain.svg",
+      "bgColor": "rgb(223, 35, 79)",
+      "level": 1,
+      "description": ""
+    }, {
+      "title": "GraphQL",
+      "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/graphql/graphql-plain.svg",
+      "bgColor": "rgb(228, 52, 170)",
+      "level": 1,
+      "description": ""
+    }, {
+      "title": "MySQL",
+      "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg",
+      "bgColor": "rgb(0, 97, 138)",
+      "level": 2,
+      "description": ""
+    }, {
+      "title": "PostegreSQL",
+      "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg",
+      "bgColor": "rgb(51, 103, 145)",
+      "level": 2,
+      "description": ""
+    }, {
+      "title": "MongoDB",
+      "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
+      "bgColor": "rgb(79, 170, 65)",
+      "level": 1,
+      "description": ""
+    }
+  ],
+  "courses": [
+    {
+      "title": "BootCamp GoStack",
+      "icon": "/icons/rocketseat.jpg",
+      "bgColor": "#66D3FA",
+      "level": 0,
+      "description": "Rocketseat",
+      "date": "2020-01-30"
+    }, {
+      "title": "Automatizando os teste em aplicações front-end",
+      "icon": "/icons/alura.png",
+      "bgColor": "#66D3FA",
+      "level": 0,
+      "description": "Alura",
+      "date": "2020-03-27"
+    }
+  ]
+}

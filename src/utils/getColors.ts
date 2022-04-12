@@ -7,6 +7,6 @@ export default function getColor(lvl:number) {
     case 3:
       return 'yellow'
     default:
-      return 'blac'
+      return 'black'
   }
 }
