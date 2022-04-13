@@ -10,8 +10,9 @@ import {
   GitHub,
 } from '@material-ui/icons';
 import ExperienceBar from './ExperienceBar';
+import Trophies from './Trophies';
 
-const HeaderContainer = styled.div`
+const HeaderContainer = styled.header`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -21,91 +22,102 @@ const HeaderContainer = styled.div`
   padding: 32px 0;
   margin-bottom: 16px;
 `;
+const SubHeader = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  width: 100%;
+`;
 const Profile = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
 
-  div.description {
+  width: 100%;
+`;
+const ProfileDescription = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  margin-left: 8px;
+  padding-top: 40px;
+
+  strong {
+    font-size: 28px;
+    font-weight: 600;
+  }
+  span {
+    font-size: 16px;
+    font-weight: 300;
+    color: #999;
+    margin-top: 4px;
+  }
+`;
+const Nav = styled.nav`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+
+  margin-left: 64px;
+  padding-top: 40px;
+
+  li {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 
-    margin-left: 8px;
-    padding-top: 40px;
-
-    strong {
-      font-size: 28px;
-      font-weight: 600;
+    svg {
+      color: #333;
+      font-size: 22px;
     }
+
     span {
-      font-size: 16px;
-      font-weight: 300;
       color: #999;
-      margin-top: 4px;
+      font-size: 16px;
+      margin-top: 8px;
+    }
+
+    &+li {
+      margin-left: 24px;
     }
   }
+`;
+const FloatList = styled.ul`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
 
-  nav {
+  position: absolute;
+  top: 8px;
+  right: 32px;
+
+  li {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
 
-    margin-left: 64px;
-    padding-top: 40px;
+    svg {
+      color: ${({theme}) => theme.colors.background};
+      font-size: 22px;
+    }
 
-    li {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-
-      svg {
-        color: #333;
-        font-size: 22px;
-      }
-
-      span {
-        color: #999;
-        font-size: 16px;
-        margin-top: 8px;
-      }
-
-      &+li {
-        margin-left: 24px;
-      }
+    &+li {
+      margin-left: 16px;
     }
   }
-
-  nav.flex-end {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-end;
-
-    position: absolute;
-    top: 0;
-    right: 32px;
-
-    li {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-
-      svg {
-        color: ${({theme}) => theme.colors.background};
-        font-size: 22px;
-      }
-
-      &+li {
-        margin-left: 16px;
-      }
-    }
-  }
+`;
+const CornerDiv = styled.div`
+  padding-top: 40px;
+  margin-left: 64px;
 `;
 const IconContainer = styled.div`
   position: relative;
@@ -142,11 +154,11 @@ const Header: NextComponentType = () => {
             objectFit="cover"
           />
         </IconContainer>
-        <div className='description'>
+        <ProfileDescription>
           <strong>Igor Jung</strong>
           <span>Web developer</span>
-        </div>
-        <nav>
+        </ProfileDescription>
+        <Nav>
           <li>
             <LocationOn />
             <span>Brazil</span>
@@ -159,8 +171,8 @@ const Header: NextComponentType = () => {
             <Language />
             <span>PT/EN</span>
           </li>
-        </nav>
-        <nav className='flex-end'>
+        </Nav>
+        <FloatList>
           <li>
             <a
               href="https://github.com/igorjung"
@@ -185,9 +197,14 @@ const Header: NextComponentType = () => {
               <LinkedIn />
             </a>
           </li>
-        </nav>
+        </FloatList>
+        <CornerDiv>
+          <Trophies />
+        </CornerDiv>
       </Profile>
-      <ExperienceBar />
+      <SubHeader>
+        <ExperienceBar />
+      </SubHeader>
       <Background />
     </HeaderContainer>
   )

@@ -1,15 +1,13 @@
 import type { NextComponentType } from 'next'
 import styled from 'styled-components'
 import { EmojiEvents } from '@material-ui/icons';
-import TrophiesCounterInterface from '../interfaces/trophies'
+import data from '../data/index.json'
 
 const TrophiesCounterContainer = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-around;
-
-  margin-bottom: 16px;
+  justify-content: center;
 
   div {
     display: flex;
@@ -20,58 +18,36 @@ const TrophiesCounterContainer = styled.div`
     & + div {
       margin-left: 16px;
     }
-
-    &#gold {
-      svg {
-        color: yellow;
-      }
-    }
-
-    &#silver {
-      svg {
-        color: gray;
-      }
-    }
-
-    &#bronze {
-      svg {
-        color: orange;
-      }
-    }
   }
 
   span {
-    font-size: 14;
-    font-weight: 600;
+    font-size: 14px;
+    color: #999;
   }
 
   svg {
-    font-size: 40px;
+    font-size: 30px;
     margin-bottom: 4px;
-
-    &#gold {
-      color: yellow;
-    }
   }
 `;
 
-const TrophiesCounter: NextComponentType = ({data} : TrophiesCounterInterface) => {
-  const goldCount = data.filter(item => item.level === 3).length;
-  const silverCount = data.filter(item => item.level === 2).length;
-  const bronzeCount = data.filter(item => item.level === 1).length;
+const TrophiesCounter: NextComponentType = () => {
+  const goldCount = data.skills.filter(item => item.level === 3).length;
+  const silverCount = data.skills.filter(item => item.level === 2).length;
+  const bronzeCount = data.skills.filter(item => item.level === 1).length;
 
   return (
     <TrophiesCounterContainer>
       <div>
-        <EmojiEvents htmlColor='yellow'/>
+        <EmojiEvents htmlColor="#F2D022"/>
         <span>{goldCount}</span>
       </div>
       <div>
-        <EmojiEvents htmlColor='silver'/>
+        <EmojiEvents htmlColor="#BFBFBF"/>
         <span>{silverCount}</span>
       </div>
       <div>
-        <EmojiEvents htmlColor='orange'/>
+        <EmojiEvents htmlColor="#D98D62"/>
         <span>{bronzeCount}</span>
       </div>
     </TrophiesCounterContainer>
