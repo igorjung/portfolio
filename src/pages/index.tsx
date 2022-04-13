@@ -1,9 +1,8 @@
 import type { NextPage } from 'next'
 import styled from 'styled-components'
 import Header from '../components/Header';
-import ExperienceBar from '../components/ExperienceBar';
 import History from '../components/History';
-import Section from '../components/Section';
+import Skills from '../components/Skills';
 
 const Container = styled.div`
   display: flex;
@@ -38,8 +37,8 @@ const Home: NextPage = () => {
     <Container>
       <Header />
       <Content>
+        <Skills />
         <History />
-        <Section title="My skills" content="skills"/>
       </Content>
     </Container>
   )

@@ -3,5 +3,4 @@ export default interface CardInterface {
   icon: string
   bgColor: string
   level: number
-  description: string
 }
