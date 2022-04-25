@@ -67,17 +67,17 @@
       "level": 1
     }
   ],
-  "courses": [
+  "history": [
     {
-      "title": "BootCamp GoStack",
-      "icon": "/icons/rocketseat.jpg",
-      "description": "Rocketseat",
-      "date": "2020-01-30"
+      "title": "Tokenlab, São carlos - SP/BR",
+      "description": "Programador Web Junior II",
+      "startDate": "2021-09-27",
+      "endDate": "-"
     }, {
-      "title": "Automatizando os teste em aplicações front-end",
-      "icon": "/icons/alura.png",
-      "description": "Alura",
-      "date": "2020-03-27"
+      "title": "VigorTech, Barra Mansa - RJ/BR",
+      "description": "Programador de sistemas de informação",
+      "startDate": "2020-03-25",
+      "endDate": "2021-09-27"
     }
   ]
 }

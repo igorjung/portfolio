@@ -1,18 +1,45 @@
 import type { NextComponentType } from 'next'
 import { useState, useMemo } from 'react'
 import styled from 'styled-components'
-import { Visibility, VisibilityOff } from '@material-ui/icons';
-import data from '../data/index.json'
-import Card from './Card'
+import { Folder, Visibility, VisibilityOff } from '@material-ui/icons';
 import Title from './Title';
+import ProjectsInterface from '../interfaces/projects';
 
-const SkillsContainer = styled.div`
+const ProjectsContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-gap: 16px;
 
   width: 100%;
   margin-bottom: 64px;
+`;
+const ProjectItem = styled.a`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 10px;
+  border: 2px solid rgba(0,0,0, 0.1);
+
+  width: 100%;
+  height: 100%;
+  max-height: 190px;
+  padding: 24px 16px;
+
+  text-decoration: none;
+  cursor: pointer;
+
+  span {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 16px 0;
+    color: ${({ theme }) => theme.colors.text};
+  }
+  svg {
+    font-size: 24px;
+    color: ${({ theme }) => theme.colors.text};
+  }
 `;
 const ShowAllButton = styled.button`
   display: flex;
@@ -42,29 +69,34 @@ const ShowAllButton = styled.button`
   }
 `;
 
-const Skills: NextComponentType = () => {
+const Projects: NextComponentType = ({ projects }: ProjectsInterface) => {
   const [ showMore, setShowMore ] = useState(false);
   const [ body, setBody ] = useState([]);
 
   const hiddenCards = useMemo(() => {
-    return data.skills.length > 3
+    return projects.length > 3
   }, [body])
 
   useMemo(() => {
     if(showMore) {
-      setBody(data.skills)
+      setBody(projects)
     } else {
-      setBody(data.skills.slice(0, 3))
+      setBody(projects.slice(0, 3))
 
     }
   }, [showMore])
 
   return (
     <>
-      <Title text={'Skills'} />
-      <SkillsContainer>
-        {body.map((item) => (
-          <Card key={item.title} {...item}  />
+      <Title text={'Projects'} />
+      <ProjectsContainer>
+        {body.map(item => (
+          <li key={item.id} >
+            <ProjectItem href={item.url} target="blank">
+              <Folder />
+              <span>{item.name}</span>
+            </ProjectItem>
+          </li>
         ))}
         {hiddenCards &&
           <li>
@@ -83,9 +115,9 @@ const Skills: NextComponentType = () => {
             </ShowAllButton>
           </li>
         }
-      </SkillsContainer>
+      </ProjectsContainer>
     </>
   )
 }
 
-export default Skills
+export default Projects

@@ -1,9 +1,10 @@
 import type { NextComponentType } from 'next'
 import { useState, useMemo } from 'react'
-import Image from 'next/image'
 import { format } from 'date-fns'
 import styled from 'styled-components'
+import { Visibility, VisibilityOff } from '@material-ui/icons';
 import data from '../data/index.json'
+import Title from './Title';
 
 const HistoryContainer = styled.div`
   display: flex;
@@ -15,27 +16,18 @@ const HistoryContainer = styled.div`
   border-radius: 4px;
 
   width: 100%;
-  margin-bottom: 16px;
-`;
-const HistoryTitle = styled.li`
-  display: grid;
-  grid-template-columns: 0.2fr 0.5fr 2fr 0.5fr 0.8fr 1fr;
-
-  height: 24px;
-  width: 100%;
-
-  text-align: left;
-  font-size: 14px;
-  font-weight: 600;
-
-  margin-bottom: 24px;
+  margin-bottom: 64px;
 `;
 const HistoryItem = styled.li`
   display: grid;
-  grid-template-columns: 0.2fr 0.5fr 2fr 0.5fr 0.8fr 1fr;
+  grid-template-columns: 30% 40% 15% 15%;
 
-  height: 32px;
+  border-radius: 10px;
+  border: 2px solid rgba(0,0,0, 0.1);
+
+  height: 56px;
   width: 100%;
+  padding: 16px;
 
   text-align: left;
   font-size: 14px;
@@ -45,8 +37,49 @@ const HistoryItem = styled.li`
     font-weight: 600;
   }
 
+  li {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+
+    &:first-child {
+      justify-content: flex-start;
+    }
+  }
+
   &+li{
-    margin-top: 32px;
+    margin-top: 16px;
+  }
+`;
+const ShowAllButton = styled.button`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 10px;
+  border: 2px solid rgba(0,0,0, 0.1);
+
+  height: 56px;
+  width: 100%;
+  padding: 16px;
+
+  cursor: pointer;
+
+  span {
+    font-size: 14px;
+    font-weight: 600;
+    margin-left: 8px;
+    color: ${({ theme }) => theme.colors.text};
+  }
+
+  svg {
+    font-size: 18px;
+    color: ${({ theme }) => theme.colors.text};
   }
 `;
 
@@ -55,47 +88,58 @@ const History: NextComponentType = () => {
   const [ body, setBody ] = useState([]);
 
   const hiddenCards = useMemo(() => {
-    return data.courses.length > 4
+    return data.history.length > 4
   }, [body])
 
   useMemo(() => {
     if(showMore) {
-      setBody(data.courses)
+      setBody(data.history)
     } else {
-      setBody(data.courses.slice(0, 4))
+      setBody(data.history.slice(0, 4))
 
     }
   }, [showMore])
 
   return (
-    <HistoryContainer>
-      <HistoryTitle>
-        <li>#</li>
-        <li />
-        <li>Title</li>
-        <li>Time</li>
-        <li>Date</li>
-        <li>School</li>
-      </HistoryTitle>
-      {body && body.map((item, index) => (
+    <>
+      <Title text={'History'} />
+      <HistoryContainer>
+      {body && body.map(item => (
         <HistoryItem key={item.title}>
-          <li><span>{index}</span></li>
-          <Image
-            src={item.icon}
-            alt={item.title}
-            layout="responsive"
-            objectFit="contain"
-            height={18}
-            width={18}
-          />
           <li><span>{item.title}</span></li>
-          <li>8:00</li>
-          <li>{format(new Date(item.date), 'MMM dd, yyyy')}</li>
-          <li>{item.description}</li>
+          <li><span>{item.description}</span></li>
+          <li>{
+            item.startDate !== '-' ?
+            format(new Date(item.startDate), 'MMM dd, yyyy') :
+            '-'
+          }</li>
+          <li>{
+            item.endDate !== '-' ?
+            format(new Date(item.endDate), 'MMM dd, yyyy') :
+            '-'
+          }</li>
         </HistoryItem>
       ))}
-      {hiddenCards && <button type="button" onClick={() => setShowMore(!showMore)}></button>}
-    </HistoryContainer>
+      {hiddenCards &&
+        <li style={{ width: '100%' }}>
+          <ShowAllButton type="button" onClick={() => setShowMore(!showMore)}>
+            {!showMore ? (
+              <>
+                <Visibility />
+                <span>Show All</span>
+              </>
+            ) : (
+              <>
+                <VisibilityOff />
+                <span>Hidde</span>
+              </>
+            )}
+          </ShowAllButton>
+        </li>
+        }
+      </HistoryContainer>
+    </>
+
   )
 }
 
