@@ -31,8 +31,17 @@ export default createGlobalStyle`
   }
   h1 {
     font: 600 32px Roboto, sans-serif;
+
+    @media screen and (max-width: 767px) {
+      font: 600 24px Roboto, sans-serif;
+    }
+
   }
   h2 {
     font: 600 22px Roboto, sans-serif;
+
+    @media screen and (max-width: 767px) {
+      font: 600 18px Roboto, sans-serif;
+    }
   }
 `;

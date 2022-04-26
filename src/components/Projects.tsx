@@ -12,6 +12,15 @@ const ProjectsContainer = styled.div`
 
   width: 100%;
   margin-bottom: 64px;
+
+  @media screen and (max-width: 767px) {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  @media screen and (max-width: 500px) {
+    grid-template-columns: 1fr 1fr;
+  }
+
 `;
 const ProjectItem = styled.a`
   display: flex;

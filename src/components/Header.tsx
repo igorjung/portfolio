@@ -21,6 +21,11 @@ const HeaderContainer = styled.header`
   width: 100%;
   padding: 32px 0;
   margin-bottom: 16px;
+
+  @media screen and (max-width: 767px) {
+    padding: 32px;
+  }
+
 `;
 const SubHeader = styled.div`
   display: flex;
@@ -47,10 +52,6 @@ const ProfileDescription = styled.div`
   margin-left: 8px;
   padding-top: 40px;
 
-  strong {
-    font-size: 28px;
-    font-weight: 600;
-  }
   span {
     font-size: 16px;
     font-weight: 300;
@@ -76,17 +77,37 @@ const Nav = styled.nav`
     svg {
       color: #333;
       font-size: 22px;
+
+      @media screen and (max-width: 767px) {
+        font-size: 18px;
+      }
     }
 
     span {
       color: #999;
       font-size: 16px;
       margin-top: 8px;
+
+      @media screen and (max-width: 767px) {
+        font-size: 14px;
+      }
     }
 
     &+li {
       margin-left: 24px;
+
+      @media screen and (max-width: 767px) {
+        margin-left: 14px;
+      }
     }
+  }
+
+  @media screen and (max-width: 767px) {
+    margin-left: auto;
+  }
+
+  @media screen and (max-width: 500px) {
+    display: none;
   }
 `;
 const FloatList = styled.ul`
@@ -118,6 +139,10 @@ const FloatList = styled.ul`
 const CornerDiv = styled.div`
   padding-top: 40px;
   margin-left: 64px;
+
+  @media screen and (max-width: 767px) {
+    display: none;
+  }
 `;
 const IconContainer = styled.div`
   position: relative;
@@ -140,6 +165,10 @@ const Background = styled.div`
   z-index: -1;
 
   background: ${({theme}) => theme.colors.primary};
+
+  @media screen and (max-width: 767px) {
+    left: 0;
+  }
 `;
 
 const Header: NextComponentType = () => {
@@ -155,7 +184,7 @@ const Header: NextComponentType = () => {
           />
         </IconContainer>
         <ProfileDescription>
-          <strong>Igor Jung</strong>
+          <h1>Igor Jung</h1>
           <span>Web developer</span>
         </ProfileDescription>
         <Nav>
