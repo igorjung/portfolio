@@ -1,10 +1,9 @@
 import type { NextPage } from 'next'
 import styled from 'styled-components'
-import Header from '../components/Header';
-import History from '../components/History';
-import Skills from '../components/Skills';
-import Projects from '../components/Projects';
-import ProjectsInterface from '../interfaces/projects';
+import Header from '../components/Header'
+import List from '../components/List'
+import ProjectsInterface from '../interfaces/projects'
+import data from '../data/index.json'
 
 const Container = styled.div`
   display: flex;
@@ -44,9 +43,9 @@ const Home: NextPage = ({ projects }: ProjectsInterface) => {
     <Container>
       <Header />
       <Content>
-        <Skills />
-        <History />
-        <Projects projects={projects} />
+        <List title={"Skills"} list={data.skills}/>
+        <List title={"History"} list={data.history}/>
+        <List title={"Projects"} list={projects}/>
       </Content>
     </Container>
   )
@@ -64,7 +63,7 @@ export const getStaticProps = async () => {
     if(!item.private) {
       projects.push({
         id: item.id,
-        name: item.name,
+        title: item.name,
         url: item.html_url,
       })
     }

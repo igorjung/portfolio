@@ -1,7 +1,7 @@
 export default interface ProjectsInterface {
   projects: [{
     id: number,
-    name: string,
+    title: string,
     private: boolean,
     url: string,
   }]

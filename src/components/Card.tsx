@@ -1,6 +1,7 @@
 import type { NextComponentType } from 'next'
 import Image from 'next/image'
 import styled from 'styled-components'
+import { format } from 'date-fns'
 import { Folder, EmojiEvents } from '@material-ui/icons';
 import getColor from '../utils/getColors';
 
@@ -16,7 +17,7 @@ const CardContainer = styled.li<{ lvl:number }>`
   border: 2px solid rgba(0,0,0, 0.1);
 
   width: 100%;
-  height: 100%;
+  height: 165px;
   padding: 24px 16px;
 
   span {
@@ -24,20 +25,28 @@ const CardContainer = styled.li<{ lvl:number }>`
     font-weight: 600;
     margin: 16px 0;
   }
-
   svg {
     font-size: 24px;
     color: ${({lvl}) => getColor(lvl)};
   }
+  small {
+    margin-top: auto;
+  }
 `;
 
 const Card: NextComponentType = ({
+  id,
   title,
   icon,
   level,
+  startDate,
+  endDate
 }: CardInterface) => {
+
+  console.log('#####', startDate, endDate)
+
   return (
-    <CardContainer lvl={level ?? 0}>
+    <CardContainer key={id} lvl={level ?? 0}>
       {icon ? (
         <Image
           src={icon}
@@ -50,6 +59,12 @@ const Card: NextComponentType = ({
       )}
       <span>{title}</span>
       {level && <EmojiEvents />}
+      {startDate || endDate && (
+        <small>
+          {format(new Date(startDate), 'MMM, yyyy')} -
+          {endDate !== '-' ? format(new Date(endDate), 'MMM, yyyy') : ''}
+        </small>
+      )}
     </CardContainer>
   )
 }

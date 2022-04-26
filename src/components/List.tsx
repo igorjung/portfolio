@@ -1,5 +1,9 @@
 import type { NextComponentType } from 'next'
+import { useState, useMemo } from 'react'
 import styled from 'styled-components'
+import Title from './Title';
+import Card from './Card';
+import HiddeButton from './HiddeButton';
 
 import ListInterface from '../interfaces/list'
 
@@ -20,11 +24,38 @@ const ListContainer = styled.ul`
   }
 `;
 
-const List: NextComponentType = ({ child } : ListInterface) => {
+const List: NextComponentType = ({ title, list } : ListInterface) => {
+  const [ showMore, setShowMore ] = useState(false);
+  const [ body, setBody ] = useState([]);
+
+  const hiddenCards = useMemo(() => {
+    return list.length > 3
+  }, [body])
+
+  useMemo(() => {
+    if(showMore) {
+      setBody(list)
+    } else {
+      setBody(list.slice(0, 3))
+
+    }
+  }, [showMore])
+
   return (
-    <ListContainer>
-      {child}
-    </ListContainer>
+    <>
+      <Title text={title} />
+      <ListContainer>
+        {body.map((item) => (
+          <Card {...item}/>
+        ))}
+        {hiddenCards && (
+          <HiddeButton
+            showMore={showMore}
+            onShowMore={() => setShowMore(!showMore)}
+          />
+        )}
+      </ListContainer>
+    </>
   )
 }
 
