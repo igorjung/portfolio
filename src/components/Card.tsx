@@ -1,8 +1,9 @@
 import type { NextComponentType } from 'next'
 import Image from 'next/image'
 import styled from 'styled-components'
-import { EmojiEvents } from '@material-ui/icons';
+import { Folder, EmojiEvents } from '@material-ui/icons';
 import getColor from '../utils/getColors';
+
 import CardInterface from '../interfaces/card';
 
 const CardContainer = styled.li<{ lvl:number }>`
@@ -36,15 +37,19 @@ const Card: NextComponentType = ({
   level,
 }: CardInterface) => {
   return (
-    <CardContainer lvl={level}>
-      <Image
-        src={icon}
-        alt={title}
-        height={32}
-        width={32}
-      />
+    <CardContainer lvl={level ?? 0}>
+      {icon ? (
+        <Image
+          src={icon}
+          alt={title}
+          height={32}
+          width={32}
+        />
+      ) : (
+        <Folder />
+      )}
       <span>{title}</span>
-      <EmojiEvents />
+      {level && <EmojiEvents />}
     </CardContainer>
   )
 }

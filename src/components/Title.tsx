@@ -10,10 +10,6 @@ const TitleContainer = styled.div`
   width: 100%;
   margin-bottom: 16px;
 
-  h2 {
-    font-size: 24px;
-  }
-
   hr {
     width: 100%;
     height: 4px;
