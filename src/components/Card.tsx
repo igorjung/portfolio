@@ -2,7 +2,7 @@ import type { NextComponentType } from 'next'
 import Image from 'next/image'
 import styled from 'styled-components'
 import { format } from 'date-fns'
-import { Folder, EmojiEvents } from '@material-ui/icons';
+import { Folder, EmojiEvents, OpenInNew } from '@material-ui/icons';
 import getColor from '../utils/getColors';
 
 import CardInterface from '../interfaces/card';
@@ -24,13 +24,24 @@ const CardContainer = styled.li<{ lvl:number }>`
     font-size: 18px;
     font-weight: 600;
     margin: 16px 0;
+    text-align: center;
   }
   svg {
     font-size: 24px;
     color: ${({lvl}) => getColor(lvl)};
   }
   small {
+    font-size: 11px;
+    font-weight: 600;
     margin-top: auto;
+  }
+  a {
+    margin-top: auto;
+
+    svg {
+      font-size: 24px;
+      color: #0000EE;
+    }
   }
 `;
 
@@ -40,11 +51,9 @@ const Card: NextComponentType = ({
   icon,
   level,
   startDate,
-  endDate
+  endDate,
+  url
 }: CardInterface) => {
-
-  console.log('#####', startDate, endDate)
-
   return (
     <CardContainer key={id} lvl={level ?? 0}>
       {icon ? (
@@ -59,11 +68,16 @@ const Card: NextComponentType = ({
       )}
       <span>{title}</span>
       {level && <EmojiEvents />}
-      {startDate || endDate && (
+      {(startDate || endDate) && (
         <small>
           {format(new Date(startDate), 'MMM, yyyy')} -
-          {endDate !== '-' ? format(new Date(endDate), 'MMM, yyyy') : ''}
+          {endDate !== '-' && ` ${format(new Date(endDate), 'MMM, yyyy')}`}
         </small>
+      )}
+      {url && (
+        <a href={url} target="blank">
+          <OpenInNew />
+        </a>
       )}
     </CardContainer>
   )
