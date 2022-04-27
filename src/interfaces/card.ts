@@ -5,6 +5,7 @@ export default interface CardInterface {
   startDate?: string
   endDate?: string
   icon?: string
+  svg?: string
   level?: number
   url?: string
 }

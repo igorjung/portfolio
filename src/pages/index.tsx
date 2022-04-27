@@ -65,6 +65,7 @@ export const getStaticProps = async () => {
         id: item.id,
         title: item.name,
         url: item.html_url,
+        svg: 'folder',
       })
     }
   })

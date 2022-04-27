@@ -2,7 +2,7 @@ import type { NextComponentType } from 'next'
 import Image from 'next/image'
 import styled from 'styled-components'
 import { format } from 'date-fns'
-import { Folder, EmojiEvents, OpenInNew } from '@material-ui/icons';
+import { Folder, Apartment, EmojiEvents, OpenInNew } from '@material-ui/icons';
 import getColor from '../utils/getColors';
 
 import CardInterface from '../interfaces/card';
@@ -45,10 +45,24 @@ const CardContainer = styled.li<{ lvl:number }>`
   }
 `;
 
+const Icon = (svg) => {
+  console.log(svg)
+
+  switch (svg) {
+    case 'folder':
+      return <Folder />
+    case 'apartment':
+      return <Apartment />
+    default:
+      return <Folder />
+  }
+}
+
 const Card: NextComponentType = ({
   id,
   title,
   icon,
+  svg,
   level,
   startDate,
   endDate,
@@ -56,16 +70,15 @@ const Card: NextComponentType = ({
 }: CardInterface) => {
   return (
     <CardContainer key={id} lvl={level ?? 0}>
-      {icon ? (
+      {icon && (
         <Image
           src={icon}
           alt={title}
           height={32}
           width={32}
         />
-      ) : (
-        <Folder />
       )}
+      {svg && Icon(svg)}
       <span>{title}</span>
       {level && <EmojiEvents />}
       {(startDate || endDate) && (
