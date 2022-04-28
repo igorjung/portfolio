@@ -11,16 +11,11 @@ const Container = styled.div`
   align-items: center;
   justify-content: flex-start;
 
-  width: 100%;
+  width: 100vw;
   max-width: 1200px;
   height: 100%;
 
   padding: 32px;
-
-  @media screen and (max-width: 767px) {
-    padding: 32px 0;
-  }
-
 `;
 const Content = styled.div`
   display: flex;
@@ -28,14 +23,9 @@ const Content = styled.div`
   align-items: flex-start;
   justify-content: flex-start;
 
-  width: 700px;
+  width: 100%;
+  max-width: 800px;
   height: 100%;
-
-  @media screen and (max-width: 767px) {
-    width: 100%;
-    padding: 0 32px;
-  }
-
 `;
 
 const Home: NextPage = ({ projects }: ProjectsInterface) => {

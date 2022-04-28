@@ -19,13 +19,9 @@ const HeaderContainer = styled.header`
   justify-content: flex-start;
 
   width: 100%;
+  max-width: 800px;
   padding: 32px 0;
   margin-bottom: 16px;
-
-  @media screen and (max-width: 767px) {
-    padding: 32px;
-  }
-
 `;
 const SubHeader = styled.div`
   display: flex;
@@ -65,7 +61,7 @@ const Nav = styled.nav`
   align-items: center;
   justify-content: flex-start;
 
-  margin-left: 64px;
+  margin: 0 auto;
   padding-top: 40px;
 
   li {
@@ -103,7 +99,7 @@ const Nav = styled.nav`
   }
 
   @media screen and (max-width: 767px) {
-    margin-left: auto;
+    margin: 0 0 0 auto;
   }
 
   @media screen and (max-width: 500px) {
@@ -138,7 +134,7 @@ const FloatList = styled.ul`
 `;
 const CornerDiv = styled.div`
   padding-top: 40px;
-  margin-left: 64px;
+  margin-left: auto;
 
   @media screen and (max-width: 767px) {
     display: none;
