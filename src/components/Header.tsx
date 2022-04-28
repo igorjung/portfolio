@@ -20,7 +20,7 @@ const HeaderContainer = styled.header`
 
   width: 100%;
   max-width: 800px;
-  padding: 32px 0;
+  padding: 40px 0;
   margin-bottom: 16px;
 `;
 const SubHeader = styled.div`
@@ -113,7 +113,7 @@ const FloatList = styled.ul`
   justify-content: flex-end;
 
   position: absolute;
-  top: 8px;
+  top: 16px;
   right: 32px;
 
   li {

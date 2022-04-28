@@ -10,10 +10,14 @@ const TitleContainer = styled.div`
   width: 100%;
   margin-bottom: 16px;
 
+  h2 {
+    color: ${({theme}) => theme.colors.primary};
+  }
+
   hr {
     width: 100%;
     height: 4px;
-    background-color: #333;
+    background-color: ${({theme}) => theme.colors.primary};
 
     margin-left: 8px;
   }
