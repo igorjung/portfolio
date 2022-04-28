@@ -1,4 +1,4 @@
-import type { NextPage } from 'next'
+import Head from 'next/head'
 import styled from 'styled-components'
 import Header from '../components/Header'
 import List from '../components/List'
@@ -31,14 +31,19 @@ const Content = styled.div`
 
 const Home: React.FC<PageInterface> = ({ user, projects }) => {
   return (
-    <Container>
-      <Header user={user}/>
-      <Content>
-        <List title={"Skills"} list={data.skills}/>
-        <List title={"History"} list={data.history}/>
-        <List title={"Projects"} list={projects}/>
-      </Content>
-    </Container>
+    <>
+      <Head>
+        <title>Igor Jung | Web Developer</title>
+      </Head>
+      <Container>
+        <Header user={user}/>
+        <Content>
+          <List title={"Skills"} list={data.skills}/>
+          <List title={"History"} list={data.history}/>
+          <List title={"Projects"} list={projects}/>
+        </Content>
+      </Container>
+    </>
   )
 }
 
@@ -51,7 +56,6 @@ async function fetchUser() {
   const req = await fetch(`https://api.github.com/users/igorjung`);
   return await req.json();
 }
-
 
 export const getStaticProps = async () => {
   const user = await fetchUser()
