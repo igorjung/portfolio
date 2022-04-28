@@ -1,4 +1,3 @@
-import type { NextComponentType } from 'next'
 import { useState, useMemo } from 'react'
 import styled from 'styled-components'
 import Title from './Title';
@@ -24,7 +23,7 @@ const ListContainer = styled.ul`
   }
 `;
 
-const List: NextComponentType = ({ title, list } : ListInterface) => {
+const List: React.FC<ListInterface> = ({ title, list }) => {
   const [ showMore, setShowMore ] = useState(false);
   const [ body, setBody ] = useState([]);
 
@@ -46,7 +45,7 @@ const List: NextComponentType = ({ title, list } : ListInterface) => {
       <Title text={title} />
       <ListContainer>
         {body.map((item) => (
-          <Card {...item}/>
+          <Card key={item.id} {...item}/>
         ))}
         {hiddenCards && (
           <HiddeButton

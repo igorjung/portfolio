@@ -1,4 +1,5 @@
+import CardInterface from './card'
 export default interface ListInterface {
-  list: [{}]
-  title: string
+  title: string,
+  list: CardInterface[],
 }

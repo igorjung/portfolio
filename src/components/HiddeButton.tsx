@@ -1,4 +1,3 @@
-import type { NextComponentType } from 'next'
 import styled from 'styled-components'
 import { Visibility, VisibilityOff } from '@material-ui/icons';
 
@@ -32,7 +31,7 @@ const HiddeButtonContent = styled.button`
   }
 `;
 
-const HiddeButton: NextComponentType = ({ showMore, onShowMore }: HiddeButtonInterface) => {
+const HiddeButton: React.FC<HiddeButtonInterface> = ({ showMore, onShowMore }) => {
   return (
     <li>
       <HiddeButtonContent type="button" onClick={onShowMore}>

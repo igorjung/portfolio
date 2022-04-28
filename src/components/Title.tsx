@@ -1,4 +1,3 @@
-import type { NextComponentType } from 'next'
 import styled from 'styled-components'
 
 const TitleContainer = styled.div`
@@ -23,7 +22,7 @@ const TitleContainer = styled.div`
   }
 `;
 
-const Title: NextComponentType = ({ text } : { text: string }) => {
+const Title: React.FC<{ text: string }> = ({ text }) => {
   return (
     <TitleContainer>
       <h2>{text}</h2>

@@ -1,6 +1,6 @@
 import { MouseEventHandler } from "react";
 
 export default interface HiddeButtonInterface {
-  showMore: boolean
+  showMore: boolean,
   onShowMore: MouseEventHandler<HTMLButtonElement>,
 }

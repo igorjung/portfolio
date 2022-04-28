@@ -1,4 +1,3 @@
-import type { NextComponentType } from 'next'
 import Image from 'next/image'
 import styled from 'styled-components'
 import { format } from 'date-fns'
@@ -45,9 +44,7 @@ const CardContainer = styled.li<{ lvl:number }>`
   }
 `;
 
-const Icon = (svg) => {
-  console.log(svg)
-
+const Icon = (svg:string) => {
   switch (svg) {
     case 'folder':
       return <Folder />
@@ -58,8 +55,7 @@ const Icon = (svg) => {
   }
 }
 
-const Card: NextComponentType = ({
-  id,
+const Card: React.FC<CardInterface> = ({
   title,
   icon,
   svg,
@@ -67,9 +63,9 @@ const Card: NextComponentType = ({
   startDate,
   endDate,
   url
-}: CardInterface) => {
+}) => {
   return (
-    <CardContainer key={id} lvl={level ?? 0}>
+    <CardContainer lvl={level ?? 0}>
       {icon && (
         <Image
           src={icon}

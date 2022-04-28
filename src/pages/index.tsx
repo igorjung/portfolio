@@ -2,8 +2,9 @@ import type { NextPage } from 'next'
 import styled from 'styled-components'
 import Header from '../components/Header'
 import List from '../components/List'
-import ProjectsInterface from '../interfaces/projects'
 import data from '../data/index.json'
+
+import PageInterface from '../interfaces/page'
 
 const Container = styled.div`
   display: flex;
@@ -28,10 +29,10 @@ const Content = styled.div`
   height: 100%;
 `;
 
-const Home: NextPage = ({ projects }: ProjectsInterface) => {
+const Home: React.FC<PageInterface> = ({ user, projects }) => {
   return (
     <Container>
-      <Header />
+      <Header user={user}/>
       <Content>
         <List title={"Skills"} list={data.skills}/>
         <List title={"History"} list={data.history}/>
@@ -46,8 +47,16 @@ async function fetchRepositories() {
   return await req.json();
 }
 
+async function fetchUser() {
+  const req = await fetch(`https://api.github.com/users/igorjung`);
+  return await req.json();
+}
+
+
 export const getStaticProps = async () => {
+  const user = await fetchUser()
   const repos = await fetchRepositories()
+
   let projects = []
   repos.forEach((item) => {
     if(!item.private) {
@@ -63,7 +72,8 @@ export const getStaticProps = async () => {
   return {
     revalidate: 300,
     props: {
-      projects
+      user,
+      projects,
     },
   };
 };

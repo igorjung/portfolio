@@ -1,4 +1,3 @@
-import type { NextComponentType } from 'next'
 import styled from 'styled-components'
 import { EmojiEvents } from '@material-ui/icons';
 import data from '../data/index.json'
@@ -31,7 +30,7 @@ const TrophiesCounterContainer = styled.div`
   }
 `;
 
-const TrophiesCounter: NextComponentType = () => {
+const TrophiesCounter: React.FC = () => {
   const goldCount = data.skills.filter(item => item.level === 3).length;
   const silverCount = data.skills.filter(item => item.level === 2).length;
   const bronzeCount = data.skills.filter(item => item.level === 1).length;

@@ -1,4 +1,3 @@
-import type { NextComponentType } from 'next'
 import styled from 'styled-components'
 import Image from 'next/image';
 import {
@@ -11,6 +10,9 @@ import {
 } from '@material-ui/icons';
 import ExperienceBar from './ExperienceBar';
 import Trophies from './Trophies';
+
+import UserInterface from '../interfaces/user'
+import { userInfo } from 'os';
 
 const HeaderContainer = styled.header`
   display: flex;
@@ -167,30 +169,31 @@ const Background = styled.div`
   }
 `;
 
-const Header: NextComponentType = () => {
+const Header: React.FC<{user: UserInterface}> = ({ user }) => {
   return (
     <HeaderContainer>
       <Profile>
         <IconContainer>
           <Image
-            src="/icons/167623667_266046425611422_5680762361843013993_n.jpg"
-            alt="Igor Jung"
+            src={user.avatar_url}
+            alt={user.name}
+            priority
             layout="fill"
             objectFit="cover"
           />
         </IconContainer>
         <ProfileDescription>
-          <h1>Igor Jung</h1>
+          <h1>{user.name}</h1>
           <span>Web developer</span>
         </ProfileDescription>
         <Nav>
           <li>
             <LocationOn />
-            <span>Brazil</span>
+            <span>{user.location}</span>
           </li>
           <li>
             <Apartment />
-            <span>Tokenlab</span>
+            <span>{user.company}</span>
           </li>
           <li>
             <Language />

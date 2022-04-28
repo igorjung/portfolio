@@ -1,4 +1,3 @@
-import type { NextComponentType } from 'next'
 import { useMemo } from 'react'
 import {
   isBefore,
@@ -57,7 +56,7 @@ const ProgressBar = styled.div`
   }
 `;
 
-const ExperienceBar: NextComponentType = () => {
+const ExperienceBar: React.FC = () => {
   const level = differenceInYears(new Date(), new Date('2020-03-25'))
 
   const xp = useMemo(() => {
