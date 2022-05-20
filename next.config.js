@@ -10,12 +10,12 @@ const nextConfig = {
         destination: `/:path*`,
       },
       {
-        source: "/blog",
-        destination: `${'https://marvelguessr.vercel.app'}/marvelguessr`,
+        source: "/marvelguessr",
+        destination: `${'https://marvel-guessing-game-git-dev-igorjung.vercel.app/'}/marvelguessr`,
       },
       {
-        source: "/blog/:path*",
-        destination: `${'https://marvelguessr.vercel.app'}/marvelguessr/:path*`,
+        source: "/marvelguessr/:path*",
+        destination: `${'https://marvel-guessing-game-git-dev-igorjung.vercel.app/'}/marvelguessr/:path*`,
       },
     ];
   },
