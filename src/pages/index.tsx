@@ -38,9 +38,10 @@ const Home: React.FC<PageInterface> = ({ user, projects }) => {
       <Container>
         <Header user={user}/>
         <Content>
+          <List title={"Sites"} list={data.sites}/>
           <List title={"Skills"} list={data.skills}/>
           <List title={"History"} list={data.history}/>
-          <List title={"Projects"} list={projects}/>
+          <List title={"Repositories"} list={projects}/>
         </Content>
       </Container>
     </>
