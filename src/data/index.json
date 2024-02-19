@@ -5,6 +5,12 @@
       "title": "MarverlGuessr",
       "icon": "/icons/marvelguessr.png",
       "url": "https://marvelguessr.igorjung.com/"
+    },
+    {
+      "id": 1,
+      "title": "DnDGenerator",
+      "icon": "/icons/dndgenerator.png",
+      "url": "https://dndgenerator.igorjung.com/"
     }
   ],
   "skills": [
@@ -17,7 +23,7 @@
       "id": 1,
       "title": "Typescript",
       "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
-      "level": 2
+      "level": 3
     }, {
       "id": 2,
       "title": "HTML5",
@@ -42,27 +48,27 @@
       "id": 6,
       "title": "Angular Js",
       "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg",
-      "level": 1
+      "level": 3
     }, {
       "id": 7,
       "title": "Node Js",
       "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-plain.svg",
-      "level": 3
+      "level": 2
     }, {
       "id": 8,
       "title": "Adonis Js",
       "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/adonisjs/adonisjs-original.svg",
-      "level": 2
+      "level": 1
     }, {
       "id": 9,
       "title": "Nest Js",
-      "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nestjs/nestjs-plain.svg",
+      "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nestjs/nestjs-original.svg",
       "level": 1
     }, {
       "id": 10,
       "title": "GraphQL",
       "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/graphql/graphql-plain.svg",
-      "level": 1
+      "level": 2
     }, {
       "id": 11,
       "title": "MySQL",
